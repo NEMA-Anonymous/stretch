@@ -29,6 +29,13 @@ footer{text-align:center;padding:2rem 1rem;background:var(--brown);color:var(--c
 .slot{flex:0 0 78%;max-width:320px;scroll-snap-align:start;background:#fff;border:4px solid var(--ink);border-radius:18px;padding:1rem;box-shadow:5px 5px 0 var(--pink)}
 .slot.open{border-style:dashed;background:var(--cream);text-align:center}.slot img{width:100%;border-radius:12px}.feat-by{font-weight:700;margin:.1rem 0}
 @media(min-width:640px){.slot{flex-basis:260px}}
+.book-link{display:flex;justify-content:flex-end;max-width:760px;margin:.2rem auto .4rem;padding:0 1rem;text-decoration:none;color:var(--ink)}
+.book-inner{position:relative;display:flex;align-items:center;gap:.5rem;background:#fff;border:3px solid var(--ink);border-radius:14px;padding:.35rem .7rem;box-shadow:4px 4px 0 var(--green);transition:transform .2s}
+.book-inner svg{width:64px;height:auto;display:block}.book-label{font-weight:700;font-size:.85rem;max-width:11rem;line-height:1.2}
+.free{position:absolute;top:-10px;right:-10px;background:var(--pink);color:#fff;border:2px solid var(--ink);border-radius:99px;padding:0 .45rem;font-size:.7rem;font-weight:700;font-family:Bungee,sans-serif}
+.book-link:hover .book-inner,.book-link:focus .book-inner{transform:translateY(-3px) rotate(-2deg)}
+@media(min-width:1200px){.book-link{position:fixed;right:8px;top:50%;transform:translateY(-50%);margin:0;padding:0;z-index:50}.book-inner{flex-direction:column;width:84px;padding:.5rem .3rem;text-align:center}.book-inner svg{width:70px}.book-label{font-size:.68rem}}
+@media (prefers-reduced-motion:reduce){.book-inner{transition:none}}
 </style></head><body>
 <!-- FEATURED SLOTS (max 10)
   Each slot is one <div class="slot ..."> inside #feat-row. Keep 10 slots total.
@@ -44,6 +51,7 @@ footer{text-align:center;padding:2rem 1rem;background:var(--brown);color:var(--c
   Put filled slots first. The "X of 10 slots open" label updates itself by counting .slot.open.
 -->
 <section class="card" style="max-width:1100px;margin:1rem auto"><span class="tag">new · closed beta</span><h2>Only(Also)Friends — closed beta</h2><p>Public demo live — join the closed beta waitlist.</p><a class="btn" href="https://muse.ai/s/only-also-friends-public-demo-xzxv5xsxixafxahxd1" target="_blank" rel="noopener">Only(Also)Friends — closed beta</a></section>
+<a class="book-link" href="https://drive.google.com/file/d/1q-oxxmyxtfsqEqkjHrlGo3jrYokDddas/view?usp=drivesdk" target="_blank" rel="noopener" aria-label="A Farmer of Actions — my free book (opens Google Drive in a new tab)" title="A Farmer of Actions — my free book"><span class="book-inner"><span class="free">FREE</span><svg viewBox="0 0 120 80" aria-hidden="true"><path d="M60 18C44 8 22 8 6 14v56c16-6 38-6 54 4z" fill="#fff6e5" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><path d="M60 18c16-10 38-10 54-4v56c-16-6-38-6-54 4z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/><path d="M60 18v56" stroke="#1b1b1b" stroke-width="4"/><path d="M16 28c10-3 22-3 34 2M16 40c10-3 22-3 34 2M16 52c10-3 22-3 34 2" stroke="#ff5fa2" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M70 30c12-5 24-5 34-2M70 42c12-5 24-5 34-2M70 54c12-5 24-5 34-2" stroke="#3bb273" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M84 6v22l5-4 5 4V6" fill="#ff5fa2" stroke="#1b1b1b" stroke-width="2.5"/></svg><span class="book-label">A Farmer of Actions — my free book</span></span></a>
 <section id="featured"><div class="feat-head"><h2>🍰 Featured on stretch</h2><span id="slots-open" class="tag">10 of 10 slots open</span></div>
 <p class="feat-note"><b>Each purchase gets you ONE of 10 promo slides — only 10 spots total, no more.</b> Every feature is hand-approved.</p>
 <p class="feat-note"><small>🐣 Early-bird pricing: long runs (week or month) available now while stretch is growing — pricing and slot lengths will change as traffic grows.</small></p>
