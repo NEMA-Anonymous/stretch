@@ -23,27 +23,41 @@ footer{text-align:center;padding:2rem 1rem;background:var(--brown);color:var(--c
 @media(min-width:640px){.slide{flex-basis:70%}}.car-nav{display:flex;gap:.5rem;justify-content:flex-end}
 .car-nav button{font-size:1.1rem;padding:.4rem .9rem;border:3px solid var(--ink);border-radius:10px;background:var(--yellow);cursor:pointer;font-weight:700}
 .cakebox{font-size:4rem;text-align:center;padding:2rem 0}
-#featured{max-width:760px;margin:1rem auto;padding:0 1rem}
-.feat-body{background:#fff;border:4px solid var(--ink);border-radius:20px;padding:1.3rem;box-shadow:7px 7px 0 var(--pink)}
-#featured.placeholder .feat-body{border-style:dashed;background:var(--cream);text-align:center}
-.feat-body img{width:100%;border-radius:12px;margin-top:.6rem}.feat-by{font-weight:700;margin:.1rem 0}
+#featured{max-width:1100px;margin:1rem auto;padding:0 1rem}.feat-head{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between}
+#featured h2{margin:0}.feat-note{margin:.2rem 0 .5rem;font-size:.9rem}
+#feat-row{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1rem}
+.slot{flex:0 0 78%;max-width:320px;scroll-snap-align:start;background:#fff;border:4px solid var(--ink);border-radius:18px;padding:1rem;box-shadow:5px 5px 0 var(--pink)}
+.slot.open{border-style:dashed;background:var(--cream);text-align:center}.slot img{width:100%;border-radius:12px}.feat-by{font-weight:700;margin:.1rem 0}
+@media(min-width:640px){.slot{flex-basis:260px}}
 </style></head><body>
-<!-- FEATURED SPOT
-  To run a real feature, replace the contents of <div class="feat-body"> below with:
-    <span class="tag">Featured</span>
-    <h2>TITLE</h2>
-    <p class="feat-by">by CREATOR</p>
-    EITHER an embed: <iframe class="vid" src="EMBED_URL" loading="lazy" allowfullscreen title="TITLE"></iframe>
-    OR an image:     <img src="IMAGE_URL" alt="DESCRIPTION">
-    <a class="btn" href="LINK_URL" target="_blank" rel="noopener">Check it out</a>
-  Remove the "placeholder" class from <section id="featured"> when a real feature is live.
+<!-- FEATURED SLOTS (max 10)
+  Each slot is one <div class="slot ..."> inside #feat-row. Keep 10 slots total.
+  To fill a slot, replace one <div class="slot open">...</div> with:
+    <div class="slot filled">
+      <span class="tag">Featured</span>
+      <h3>TITLE</h3>
+      <p class="feat-by">by CREATOR</p>
+      EITHER an embed: <iframe class="vid" src="EMBED_URL" loading="lazy" allowfullscreen title="TITLE"></iframe>
+      OR an image:     <img src="IMAGE_URL" alt="DESCRIPTION">
+      <a class="btn" href="LINK_URL" target="_blank" rel="noopener">Check it out</a>
+    </div>
+  Put filled slots first. The "X of 10 slots open" label updates itself by counting .slot.open.
 -->
-<section id="featured" class="placeholder"><div class="feat-body">
-  <span class="tag">Featured</span>
-  <h2>Your work here — get featured on stretch</h2>
-  <p>Promote your video, music, site or app. <b>$10/week · $25/month.</b> Every feature is hand-approved.</p>
-  <a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a>
+<section id="featured"><div class="feat-head"><h2>🍰 Featured on stretch</h2><span id="slots-open" class="tag">10 of 10 slots open</span></div>
+<p class="feat-note">Every feature is hand-approved.</p>
+<div id="feat-row">
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
+  <div class="slot open"><span class="tag">Open slot</span><h3>Your work here</h3><p>Promote your video, music, site or app.</p><p><b>$10/week · $25/month</b></p><a class="btn" href="https://ko-fi.com/raphaelmorales" target="_blank" rel="noopener">Get featured</a></div>
 </div></section>
+
 
 <header><div class="emoji">🍰🍌</div><h1>EAT CAKE-U</h1><p>stretch — the long version of my links</p><p>Raphael Morales · music, tools, comics & whatever I'm cooking</p></header>
 <main>
@@ -72,4 +86,4 @@ footer{text-align:center;padding:2rem 1rem;background:var(--brown);color:var(--c
 <section class="card"><span class="tag">x</span><h2>Raphael Morales</h2><p>My profile on X (@RaphaelMor55653).</p><a class="btn" href="https://x.com/RaphaelMor55653" target="_blank" rel="noopener noreferrer">Open on X</a></section>
 <section class="card"><span class="tag">find me</span><h2>Everywhere else</h2><p>Follow along wherever you scroll.</p>
 <a class="btn" href="https://youtube.com/@mranonymouselol" target="_blank" rel="noopener noreferrer">YouTube</a><a class="btn" href="https://www.instagram.com/eat_cake_u" target="_blank" rel="noopener noreferrer">Instagram @eat_cake_u</a><a class="btn" href="https://www.tiktok.com/@raphaelmorales54" target="_blank" rel="noopener noreferrer">TikTok</a><a class="btn alt" href="https://open.spotify.com/user/31kwt6mc5dw53fmenede6jo7knsm" target="_blank" rel="noopener noreferrer">Spotify</a><a class="btn" href="https://www.facebook.com/share/g/19WPqdBMYf" target="_blank" rel="noopener noreferrer">Facebook</a><a class="btn alt" href="https://open.spotify.com/show/6naUmGmUsYazh49vQfVVqa" target="_blank" rel="noopener noreferrer">Podcast</a><a class="btn alt" href="https://x.com/RaphaelMor55653" target="_blank" rel="noopener noreferrer">X</a></section>
-</main><footer>🍰 eat more cake 🍌 · EAT CAKE-U · Raphael Morales<br><small id="visits"></small></footer><script>function carMove(d){const c=document.getElementById("car");c.scrollBy({left:d*c.querySelector(".slide").offsetWidth,behavior:"smooth"})}</script><script>fetch("https://abacus.jasoncameron.dev/hit/nema-stretch/visits").then(r=>r.json()).then(d=>{if(d&&d.value)document.getElementById("visits").textContent="👀 "+d.value.toLocaleString()+" visits"}).catch(()=>{})</script></body></html>
+</main><footer>🍰 eat more cake 🍌 · EAT CAKE-U · Raphael Morales<br><small id="visits"></small></footer><script>function carMove(d){const c=document.getElementById("car");c.scrollBy({left:d*c.querySelector(".slide").offsetWidth,behavior:"smooth"})}</script><script>fetch("https://abacus.jasoncameron.dev/hit/nema-stretch/visits").then(r=>r.json()).then(d=>{if(d&&d.value)document.getElementById("visits").textContent="👀 "+d.value.toLocaleString()+" visits"}).catch(()=>{})</script><script>(function(){var o=document.querySelectorAll("#feat-row .slot.open").length;document.getElementById("slots-open").textContent=o+" of 10 slots open"})()</script></body></html>
