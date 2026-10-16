@@ -140,11 +140,10 @@ function start(el){if(!unlocked){showHint();return}if(cur&&cur!==el)stop(cur);cu
  var r=p.play();(r&&r.catch?r:Promise.resolve()).then(function(){fade(p,VOL)}).catch(function(){showHint()});setBtn(el,true)}
 function stop(el){var p=el._p;setBtn(el,false);if(cur===el)cur=null;if(!p)return;fade(p,0,function(){p.pause()})}
 function setBtn(el,on){var b=el.querySelector(".aud-btn");if(b){b.setAttribute("aria-pressed",on);b.textContent=on?"🔊":"🔈"}}
-var touch=window.matchMedia("(hover: none)").matches;
 document.querySelectorAll("[data-audio]").forEach(function(el){
  var b=document.createElement("button");b.type="button";b.className="aud-btn";b.textContent="🔈";b.setAttribute("aria-pressed","false");b.setAttribute("aria-label","Preview sound");b.title="Preview sound";el.appendChild(b);
  b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();unlock();cur===el?stop(el):start(el)});
- if(!touch){el.addEventListener("mouseenter",function(){start(el)});el.addEventListener("mouseleave",function(){stop(el)})}
+ el.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse")start(el)});el.addEventListener("pointerleave",function(e){if(e.pointerType==="mouse")stop(el)})
 });
 document.addEventListener("visibilitychange",function(){if(document.hidden&&cur)stop(cur)});
 })();
