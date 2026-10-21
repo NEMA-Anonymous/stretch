@@ -48,14 +48,15 @@ footer{text-align:center;padding:2rem 1rem;background:var(--brown);color:var(--c
 const sid=new URLSearchParams(location.search).get('session_id')||'';
 document.getElementById('session_id').value=sid;
 if(sid){for(const id of['orderline','orderline2']){const e=document.getElementById(id);e.textContent='Order: '+sid;e.hidden=false;}}
+if(new URLSearchParams(location.search).get('thanks')){document.getElementById('formcard').hidden=true;document.getElementById('thanks').hidden=false;}
 const f=document.getElementById('intake'),err=document.getElementById('err'),btn=document.getElementById('send');
 f.addEventListener('submit',async ev=>{ev.preventDefault();err.textContent='';
  if(![...f.querySelectorAll('.plat')].some(i=>i.value.trim())){err.textContent='Please fill in at least one platform.';return;}
  const em=f.email;if(!em.value.trim()||!em.checkValidity()){err.textContent='Please enter a valid email.';em.focus();return;}
  btn.disabled=true;btn.textContent='Sending…';
- try{const r=await fetch('https://formsubmit.co/ajax/ralph912lol@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+ try{const r=await fetch('https://formsubmit.co/ajax/d87fd1e3708373f3db77b7ba6ec62427',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
   const j=await r.json().catch(()=>({}));if(!r.ok||String(j.success)==='false')throw new Error(j.message||'send failed');
   document.getElementById('formcard').hidden=true;document.getElementById('thanks').hidden=false;scrollTo(0,0);
- }catch(e){err.textContent='Something went wrong sending that. Please try again, or email ralph912lol@gmail.com with your handles and order number.';btn.disabled=false;btn.textContent='Send my handles';}
+ }catch(e){try{f.action='https://formsubmit.co/d87fd1e3708373f3db77b7ba6ec62427';f.method='POST';const n=document.createElement('input');n.type='hidden';n.name='_next';n.value=location.origin+location.pathname+'?thanks=1'+(sid?'&session_id='+encodeURIComponent(sid):'');f.appendChild(n);HTMLFormElement.prototype.submit.call(f);return;}catch(_){}err.textContent='Something went wrong sending that. Please try again, or email ralph912lol@gmail.com with your handles and order number.';btn.disabled=false;btn.textContent='Send my handles';}
 });
 </script></body></html>
