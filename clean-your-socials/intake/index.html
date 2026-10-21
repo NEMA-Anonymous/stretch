@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clean Your Socials — your handles · stretch</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ff5fa2;--yellow:#ffd23f;--green:#3bb273;--brown:#5b3a1e;--cream:#fff6e5;--ink:#1b1b1b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
+header{text-align:center;padding:2.4rem 1rem 1.6rem;background:repeating-linear-gradient(45deg,var(--yellow) 0 22px,#ffe27a 22px 44px);border-bottom:6px solid var(--ink)}
+h1{font-family:Bungee,sans-serif;font-size:clamp(2rem,9vw,3.6rem);margin:.2rem 0;color:var(--pink);text-shadow:4px 4px 0 var(--ink)}
+header p{font-weight:700;margin:.3rem 0}
+main{max-width:760px;margin:0 auto;padding:1.5rem 1rem 3rem;display:grid;gap:1.4rem}
+.card{background:#fff;border:4px solid var(--ink);border-radius:20px;padding:1.3rem;box-shadow:7px 7px 0 var(--pink)}
+h2{font-family:Bungee,sans-serif;font-size:1.25rem;margin:0 0 .4rem}.tag{display:inline-block;background:var(--yellow);border:2px solid var(--ink);border-radius:99px;padding:0 .6rem;font-size:.75rem;font-weight:700;margin-bottom:.5rem}
+label{display:block;font-weight:700;margin:.9rem 0 .25rem}
+input,textarea{width:100%;font:inherit;padding:.6rem .7rem;border:3px solid var(--ink);border-radius:12px;background:var(--cream)}
+textarea{min-height:6rem}
+.btn{display:inline-block;margin-top:1rem;padding:.7rem 1.2rem;background:var(--pink);color:#fff;font-weight:700;font:inherit;font-weight:700;text-decoration:none;border:3px solid var(--ink);border-radius:12px;cursor:pointer}
+.btn:hover{background:var(--brown)}.btn[disabled]{opacity:.6}
+.order{font-weight:700;background:var(--yellow);border:2px solid var(--ink);border-radius:10px;padding:.3rem .7rem;display:inline-block;word-break:break-all}
+.err{color:#b00020;font-weight:700}small{color:#444}
+footer{text-align:center;padding:2rem 1rem;background:var(--brown);color:var(--cream);font-weight:700}footer a{color:var(--yellow)}
+</style></head><body>
+<header><div style="font-size:2.2rem">🍰🧼</div><h1>Clean Your Socials</h1><p>Thanks for your order! Tell me where to look.</p></header>
+<main>
+<section class="card" id="formcard"><span class="tag">$5 once · report within 48 hours</span><h2>Your handles</h2>
+<p id="orderline" class="order" hidden></p>
+<p>Fill in at least one. A handle (like <code>@you</code>) or a profile link both work. Covers Instagram, TikTok, Threads, Facebook and X.</p>
+<form id="intake" novalidate>
+<input type="hidden" name="session_id" id="session_id">
+<input type="hidden" name="_subject" value="Clean Your Socials — new intake">
+<input type="hidden" name="_template" value="table">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<label for="instagram">Instagram</label><input id="instagram" name="instagram" class="plat" placeholder="@handle or instagram.com/…">
+<label for="tiktok">TikTok</label><input id="tiktok" name="tiktok" class="plat" placeholder="@handle or tiktok.com/@…">
+<label for="threads">Threads</label><input id="threads" name="threads" class="plat" placeholder="@handle or threads.net/@…">
+<label for="facebook">Facebook</label><input id="facebook" name="facebook" class="plat" placeholder="profile link">
+<label for="x">X</label><input id="x" name="x" class="plat" placeholder="@handle or x.com/…">
+<label for="email">Your email (required — your report goes here)</label><input id="email" name="email" type="email" required placeholder="you@example.com">
+<label for="notes">Anything else? (optional)</label><textarea id="notes" name="notes" placeholder="Accounts to skip, things you're worried about, etc."></textarea>
+<p id="err" class="err" role="alert"></p>
+<button class="btn" type="submit" id="send">Send my handles</button>
+</form>
+<p><small>Report only: we never ask for your passwords or logins, and we never touch your accounts.</small></p>
+</section>
+<section class="card" id="thanks" hidden><span class="tag">got it</span><h2>Thank you! 🎉</h2><p>Your handles are in. Your report will land in your inbox within 48 hours.</p><p id="orderline2" class="order" hidden></p><p>Remember: when you make fixes, go slow — a few at a time, spread over several days.</p><a class="btn" href="../../#clean-your-socials">Back to stretch</a></section>
+</main>
+<footer><a href="../../">← stretch — EAT CAKE-U</a></footer>
+<script>
+const sid=new URLSearchParams(location.search).get('session_id')||'';
+document.getElementById('session_id').value=sid;
+if(sid){for(const id of['orderline','orderline2']){const e=document.getElementById(id);e.textContent='Order: '+sid;e.hidden=false;}}
+const f=document.getElementById('intake'),err=document.getElementById('err'),btn=document.getElementById('send');
+f.addEventListener('submit',async ev=>{ev.preventDefault();err.textContent='';
+ if(![...f.querySelectorAll('.plat')].some(i=>i.value.trim())){err.textContent='Please fill in at least one platform.';return;}
+ const em=f.email;if(!em.value.trim()||!em.checkValidity()){err.textContent='Please enter a valid email.';em.focus();return;}
+ btn.disabled=true;btn.textContent='Sending…';
+ try{const r=await fetch('https://formsubmit.co/ajax/ralph912lol@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+  const j=await r.json().catch(()=>({}));if(!r.ok||String(j.success)==='false')throw new Error(j.message||'send failed');
+  document.getElementById('formcard').hidden=true;document.getElementById('thanks').hidden=false;scrollTo(0,0);
+ }catch(e){err.textContent='Something went wrong sending that. Please try again, or email ralph912lol@gmail.com with your handles and order number.';btn.disabled=false;btn.textContent='Send my handles';}
+});
+</script></body></html>
